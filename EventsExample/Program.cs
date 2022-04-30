@@ -15,17 +15,13 @@ namespace EventsExample
 
             //handle the event or subscribe to event
             //publisher.myEvent += subscriber.Add;
-            publisher.myEvent += delegate(int a, int b)
-            {
-                int c = a + b;
-                Console.WriteLine(c);
-            };
+            publisher.myEvent += (a, b) => a + b;
            
 
             //invoke the event
-            publisher.RaiseEvent(10, 20);
-            publisher.RaiseEvent(50, 20);
-            publisher.RaiseEvent(900, 20);
+            Console.WriteLine(publisher.RaiseEvent(10, 20));
+            Console.WriteLine(publisher.RaiseEvent(50, 20));
+            Console.WriteLine(publisher.RaiseEvent(900, 20));
 
             Console.ReadKey();
         }

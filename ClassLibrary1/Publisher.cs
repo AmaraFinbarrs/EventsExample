@@ -4,7 +4,7 @@
 namespace ClassLibrary1
 {
     //delegate type
-    public delegate void MyDelegateType(int a, int b);
+    public delegate int MyDelegateType(int a, int b);
     
     //Publisher
     public class Publisher
@@ -12,13 +12,15 @@ namespace ClassLibrary1
         //step 1: create event
         public event MyDelegateType myEvent;
 
-        public void RaiseEvent(int a, int b)
+        public int RaiseEvent(int a, int b)
         {
             //step 2: raise event
             if (this.myEvent != null)
             {
-                this.myEvent(a, b);
+                int x = this.myEvent(a, b);
+                return x;
             }
+            return 0;
         }
     }
 }
