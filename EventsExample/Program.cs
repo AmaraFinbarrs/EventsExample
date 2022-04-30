@@ -14,7 +14,13 @@ namespace EventsExample
             Publisher publisher = new Publisher();
 
             //handle the event or subscribe to event
-            publisher.myEvent += subscriber.Add;
+            //publisher.myEvent += subscriber.Add;
+            publisher.myEvent += delegate(int a, int b)
+            {
+                int c = a + b;
+                Console.WriteLine(c);
+            };
+           
 
             //invoke the event
             publisher.RaiseEvent(10, 20);
