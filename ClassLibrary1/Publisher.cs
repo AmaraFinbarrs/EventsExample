@@ -8,16 +8,17 @@ namespace ClassLibrary1
     public class Publisher
     {
         //step 1: create event
-        public event Action<int, int> myEvent;
+        public event Predicate<int> myEvent;
 
-        public void RaiseEvent(int a, int b)
+        public bool RaiseEvent(int a)
         {
             //step 2: raise event
             if (this.myEvent != null)
             {
-                this.myEvent(a, b);
-              
+                bool result = this.myEvent(a);
+                return result;
             }
+            return false;
         }
     }
 }
